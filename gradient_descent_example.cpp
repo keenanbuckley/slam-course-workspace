@@ -1,7 +1,4 @@
 #include <iostream>
-#include <cmath>
-#include <vector>
-#include <functional>
 #include <eigen3/Eigen/Dense>
 
 #include "gradient_descent.h"
