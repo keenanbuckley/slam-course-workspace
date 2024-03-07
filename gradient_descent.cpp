@@ -35,11 +35,11 @@ VectorXd gradient_descent(const function<double(const VectorXd &)> &f,
 
         VectorXd new_x(x.rows());
         double t = 1.0;
-        while (f(new_x) >= f(x))
+        do
         {
             new_x = x - t * alpha * grad_f(x);
             t *= beta;
-        }
+        } while (f(new_x) >= f(x));
 
         x = new_x;
         iter++;
@@ -54,9 +54,9 @@ VectorXd gradient_descent(const function<double(const VectorXd &)> &f,
 }
 
 // Compute approximate gradient around a point using central differences
-VectorXd approximate_gradient(  const function<double(const VectorXd &)> &f,
-                                const VectorXd &x,
-                                double epsilon)
+VectorXd approximate_gradient(const function<double(const VectorXd &)> &f,
+                              const VectorXd &x,
+                              double epsilon)
 {
     int n = x.size();
     VectorXd grad(n);
